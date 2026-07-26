@@ -1,0 +1,41 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Node / frontend / chrome-extension
+node_modules/
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+coverage/
+.turbo/
+
+# .NET / backend
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+appsettings.*.local.json
+*.pfx
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# IDE
+.idea/
+*.swp
+
+# Logs
+*.log
+logs/
