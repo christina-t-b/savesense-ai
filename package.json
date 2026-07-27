@@ -1,0 +1,8 @@
+{
+  "name": "savesense-ai",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "shared"
+  ]
+}
