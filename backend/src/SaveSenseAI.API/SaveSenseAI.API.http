@@ -1,0 +1,6 @@
+@SaveSenseAI.API_HostAddress = http://localhost:5007
+
+GET {{SaveSenseAI.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
