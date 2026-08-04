@@ -1,6 +1,8 @@
 using SaveSenseAI.API.Endpoints;
 using SaveSenseAI.API.Middleware;
+using SaveSenseAI.API.Services;
 using SaveSenseAI.Application;
+using SaveSenseAI.Application.Common.Interfaces;
 using SaveSenseAI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,9 @@ var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
 builder.Services.AddOpenApi();
 builder.Services.AddProblemDetails();
