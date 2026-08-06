@@ -65,8 +65,9 @@ public sealed class RefreshAccessTokenCommandHandler(
 
         return new AuthTokensResult(
             newAccessToken,
+            now.AddMinutes(_settings.AccessTokenExpiryMinutes),
             newRawRefreshToken,
-            now.AddMinutes(_settings.AccessTokenExpiryMinutes));
+            newRefreshToken.ExpiresAtUtc);
     }
 
     private async Task RevokeAllActiveTokensForUserAsync(Guid userId, DateTimeOffset now, CancellationToken cancellationToken)

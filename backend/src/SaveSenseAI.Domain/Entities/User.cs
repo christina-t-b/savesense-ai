@@ -38,4 +38,18 @@ public class User : BaseEntity
             CreatedAtUtc = nowUtc,
         };
     }
+
+    /// <summary>Syncs profile fields on repeat logins, in case they changed on Google's side.</summary>
+    public void UpdateProfile(string email, string displayName)
+    {
+        if (!string.IsNullOrWhiteSpace(email))
+        {
+            Email = email;
+        }
+
+        if (!string.IsNullOrWhiteSpace(displayName))
+        {
+            DisplayName = displayName;
+        }
+    }
 }
