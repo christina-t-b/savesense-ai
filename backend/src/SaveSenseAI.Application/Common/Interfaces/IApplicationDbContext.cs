@@ -12,6 +12,9 @@ public interface IApplicationDbContext
 {
     DbSet<User> Users { get; }
     DbSet<RefreshToken> RefreshTokens { get; }
+    DbSet<Store> Stores { get; }
+    DbSet<Coupon> Coupons { get; }
+    DbSet<CouponValidationAttempt> CouponValidationAttempts { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

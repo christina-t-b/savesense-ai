@@ -31,10 +31,21 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    // Accept/emit enum names ("Percentage") instead of raw numbers — a
+    // JSON API where clients have to know DiscountType 0 means Percentage
+    // is a usability bug, not a minor style choice.
+    options.SerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+});
+
 builder.Services.AddOpenApi();
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
 builder.Services.AddExceptionHandler<AuthenticationFailedExceptionHandler>();
+builder.Services.AddExceptionHandler<NotFoundExceptionHandler>();
+builder.Services.AddExceptionHandler<BadRequestExceptionHandler>();
+builder.Services.AddExceptionHandler<DbUpdateExceptionHandler>();
 
 builder.Services.AddCors(options =>
 {
@@ -123,6 +134,7 @@ app.UseAuthorization();
 
 app.MapHealthEndpoints();
 app.MapAuthEndpoints();
+app.MapCouponEndpoints();
 
 app.Run();
 

@@ -19,3 +19,8 @@ public sealed class FakeJwtTokenService : IJwtTokenService
 
     public string GenerateRefreshToken() => $"refresh-token-{Interlocked.Increment(ref _refreshTokenCounter)}";
 }
+
+public sealed class FakeCurrentUserService(Guid? userId = null) : ICurrentUserService
+{
+    public Guid? UserId { get; set; } = userId;
+}

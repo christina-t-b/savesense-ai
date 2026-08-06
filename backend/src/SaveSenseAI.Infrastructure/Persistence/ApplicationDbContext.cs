@@ -9,6 +9,9 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 {
     public DbSet<User> Users => Set<User>();
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+    public DbSet<Store> Stores => Set<Store>();
+    public DbSet<Coupon> Coupons => Set<Coupon>();
+    public DbSet<CouponValidationAttempt> CouponValidationAttempts => Set<CouponValidationAttempt>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
